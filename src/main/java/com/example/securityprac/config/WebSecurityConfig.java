@@ -1,2 +1,5 @@
-package com.example.securityprac.config;public class WebSecurityConfig {
+package com.example.securityprac.config;
+
+public class WebSecurityConfig {
+
 }
