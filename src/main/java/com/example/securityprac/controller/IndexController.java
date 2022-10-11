@@ -1,6 +1,6 @@
 package com.example.securityprac.controller;
 
-import com.example.securityprac.model.User;
+import com.example.securityprac.model.Member;
 import com.example.securityprac.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -49,7 +49,7 @@ public class IndexController {
     }
 
     @PostMapping("/join")
-    public String join(User user) {
+    public String join(Member user) {
         System.out.println(user);
         user.setRole("ROLE_USER");
         String rawPassword = user.getPassword();

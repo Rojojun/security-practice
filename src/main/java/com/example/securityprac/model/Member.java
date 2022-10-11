@@ -1,6 +1,5 @@
 package com.example.securityprac.model;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,7 +12,7 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @NoArgsConstructor
-public class User {
+public class Member {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private int id;

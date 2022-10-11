@@ -1,8 +1,8 @@
 package com.example.securityprac.repository;
 
-import com.example.securityprac.model.User;
+import com.example.securityprac.model.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<Member, Integer> {
 
 }
