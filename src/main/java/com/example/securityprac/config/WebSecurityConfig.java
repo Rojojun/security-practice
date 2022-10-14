@@ -1,5 +1,7 @@
 package com.example.securityprac.config;
 
+import com.example.securityprac.config.oauth.PrincipalOauth2UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -14,6 +16,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true) // @Secured 어노테이션 활성화, @PreAuthorize 및 @PostAuthorize 어노테이션 활성화
 // Spring Security Filter를 Spring FilterChain에 등록
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private PrincipalOauth2UserService principalOauth2UserService;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -41,6 +46,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/")
                 .and()
                 .oauth2Login()
-                .loginPage("/loginForm"); //구글 로그인 이후 후처리 필요
+                .loginPage("/loginForm")
+                .userInfoEndpoint()
+                .userService(principalOauth2UserService); //구글 로그인 이후 후처리 필요
+                /*
+                1. 코드 받기 (인증)
+                2. 엑세스 토큰 (권한)
+                3. 사용자 프로필 정보를 가져오기
+                4-1. 정보를 기반으로 회원가입 자동으로 진행
+                4-2. 추가적인 정보를 받을 수 있도록 함
+                Tip 구글로그인이 완료 될 시 코드를 받는게 아님, 엑세스토큰 + 사용자 프로필 정보를 받음
+                 */
+
     }
 }
