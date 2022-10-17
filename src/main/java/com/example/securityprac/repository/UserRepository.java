@@ -2,6 +2,8 @@ package com.example.securityprac.repository;
 
 import com.example.securityprac.model.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 public interface UserRepository extends JpaRepository<Member, Integer> {
     // findBy 규칙 -> Username 문법

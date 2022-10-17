@@ -18,6 +18,7 @@ public class PrincipalDetailsService implements UserDetailsService {
 
 
     // 시큐리티 session( = Authentication ( = UserDetails))
+    // 함수 종료시 @AuthenticationPrincipal 생성
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Member memberEntity = userRepository.findByUsername(username);

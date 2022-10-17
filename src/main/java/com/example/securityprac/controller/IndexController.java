@@ -54,8 +54,11 @@ public class IndexController {
         return "index";
     }
 
+    // OAuth 로그인을 해도 Principal Details Type GET!
+    // 일반 로그인을 해도 Principal Details Type GET!
     @GetMapping("/user")
-    public @ResponseBody String user() {
+    public @ResponseBody String user(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+        System.out.println("PrincipalDetails : " + principalDetails.getMember() );
         return "user";
     }
 
